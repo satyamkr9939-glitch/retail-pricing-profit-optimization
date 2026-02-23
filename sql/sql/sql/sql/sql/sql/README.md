@@ -1,116 +1,184 @@
-Retail Pricing & Profit Optimization Case Study
-Business Problem
+# 🧠 Retail Pricing & Profit Optimization — End-to-End SQL Case Study
 
-A retail company was experiencing steady revenue growth but inconsistent profitability.
-Leadership suspected that aggressive discounting, regional inefficiencies, and certain product categories were driving margin erosion.
+## 📌 Overview
 
-The objective of this analysis was to identify profit leakage drivers and recommend data-driven pricing and customer strategies to improve overall profitability.
+This project is an **end-to-end SQL analytics case study** focused on identifying **profit leakage in a retail business**.  
+While sales were growing, profitability was inconsistent. The goal was to diagnose *why* and propose **data-driven business actions**.
 
-Dataset Overview
+This case study is structured to reflect how a **startup or business analytics team** would approach a real pricing and profitability problem.
 
-~9,000 retail transactions
+---
 
-Fields: Order Date, Region, Customer, Category, Sub-Category, Product, Sales, Profit, Discount
+## 🏢 Business Problem
 
-Data validated for:
+The retail business faced the following challenges:
 
-NULL values
+- Revenue was increasing, but profit margins were volatile
+- Heavy discounting was suspected to erode margins
+- Some regions and products appeared to generate sales but not profit
+- Leadership needed **actionable insights**, not just reports
 
-Duplicate orders
+### 🎯 Objective
 
-Invalid discount ranges
+Use SQL to:
+- Identify profit leakage drivers
+- Quantify the impact of discounts, regions, customers, and products
+- Recommend strategies to improve profitability **without reducing sales**
 
-Key Business Questions
+---
 
-Which regions generate revenue but low profit?
+## 📊 Dataset Description
 
-At what discount level do orders turn unprofitable?
+- ~9,000 retail transaction records
+- Granularity: order-level
+- Key fields:
+  - Order ID, Order Date
+  - Region, City
+  - Customer Name
+  - Category, Sub-Category, Product Name
+  - Sales, Profit, Discount
 
-Which customers drive the majority of revenue?
+### Data Quality Checks Performed
+- NULL value validation
+- Duplicate order detection
+- Discount range validation (0–100%)
+- Date format consistency
 
-Which products consistently operate at a loss?
+---
 
-How can profitability be improved without reducing sales volume?
+## ❓ Key Business Questions Answered
 
-Analytical Approach
-1. Data Cleaning
+1. Which regions generate revenue but weak or negative profit?
+2. At what discount levels do orders become unprofitable?
+3. Which customers contribute the most to revenue and profit?
+4. Which products consistently operate at a loss?
+5. How can margins be improved without sacrificing growth?
 
-Validated records
+---
 
-Checked discount boundaries
+## 🧩 Analytical Approach
 
-Ensured date formatting consistency
+### 1️⃣ Data Cleaning & Validation
+- Verified record completeness
+- Checked discount boundaries
+- Ensured consistent date handling
 
-2. KPI Analysis
+📄 File: `01_data_cleaning.sql`
 
-Total Sales
+---
 
-Total Profit
+### 2️⃣ Core KPI Analysis
+- Total Sales, Total Profit, Profit Margin
+- Monthly and yearly trends
+- Average Order Value (AOV)
+- Profit vs Loss order distribution
 
-Profit Margin %
+📄 File: `02_kpi_analysis.sql`
 
-Monthly and yearly trends
+---
 
-Average Order Value
+### 3️⃣ Regional Performance Analysis
+- Sales vs Profit by region
+- Identification of loss-making regions
+- Regional contribution to total revenue
+- Profitability ranking using window functions
 
-3. Regional Analysis
+📄 File: `03_regional_analysis.sql`
 
-Sales vs Profit comparison by region
+---
 
-Region contribution to total revenue
+### 4️⃣ Customer Segmentation & Value Analysis
+- Customer revenue and profit aggregation
+- Ranking customers using `RANK()`
+- Pareto analysis (Top 20% revenue contributors)
+- Identification of high-revenue but low-profit customers
 
-Profitability ranking using window functions
+📄 File: `04_customer_segmentation.sql`
 
-4. Customer Segmentation
+---
 
-Revenue ranking using RANK()
+### 5️⃣ Discount Impact Analysis
+- Profitability across discount bands
+- Margin comparison by discount category
+- Detection of loss-making high-discount orders
+- Region-wise impact of aggressive discounting
 
-Pareto analysis (Top 20% customers)
+📄 File: `05_discount_impact.sql`
 
-Profit-based customer classification
+---
 
-Detection of high-revenue but low-profit customers
+### 6️⃣ Product-Level Profitability
+- Category & sub-category margin analysis
+- Top profitable products
+- Top loss-making products
+- High-sales but negative-profit product detection
 
-5. Discount Impact Analysis
+📄 File: `06_product_profitability.sql`
 
-Profit margin by discount category
+---
 
-Identification of loss-making high-discount orders
+## 🔍 Key Insights
 
-Region-wise impact of discounting
+- Discounts above ~30% drive a disproportionate share of losses
+- Some regions generate strong sales but consistently weak margins
+- Revenue is highly concentrated among a small customer segment
+- Several high-volume products consistently operate at negative profit
 
-6. Product Profitability
+---
 
-Category and sub-category margin comparison
+## 💡 Business Recommendations
 
-Top profitable products
+- Introduce **discount caps** or approval workflows for high discounts
+- Reprice or bundle loss-making products
+- Focus retention efforts on **high-profit customers**
+- Monitor region-level profitability, not just sales
 
-Top loss-making products
+---
 
-High sales but negative profit detection
+## 📈 Estimated Business Impact
 
-Key Insights
+- Reduction in loss-making orders
+- Margin improvement potential of **10–18%**
+- More sustainable growth without aggressive discounting
 
-Discounts above ~30% contribute disproportionately to loss-making orders
+---
 
-Certain regions generate strong revenue but weak margins
+## 🛠 Tools & Skills Demonstrated
 
-Revenue is concentrated among a small percentage of customers
+- SQL
+  - Aggregations & GROUP BY
+  - Window functions (RANK, NTILE)
+  - CASE-based segmentation
+  - Profit margin calculations
+- Business analytics & decision framing
+- GitHub documentation & project structuring
 
-Multiple high-volume products consistently operate at negative margins
+---
 
-Business Impact (Estimated)
+## 📂 Repository Structure
 
-Introducing discount caps could reduce loss-making orders significantly
 
-Repricing loss-making SKUs could improve margins by double digits
 
-Focusing on high-value customers reduces dependency on heavy discounting
+## 🚀 What I Would Do Next
 
-Tools Used
+If this project were continued in a real business environment, the next steps would be:
 
-SQL (Aggregations, Window Functions, CASE logic)
+- **A/B test discount thresholds**  
+  Experiment with controlled discount levels to measure impact on conversion rate and profit margin.
 
-Excel (Data validation)
+- **Build a real-time profitability dashboard**  
+  Track sales, profit, discount %, and loss-making orders daily to enable faster decisions.
 
-GitHub (Documentation & version control)
+- **Introduce customer lifetime value (CLV) analysis**  
+  Identify customers who are profitable long-term, not just high-revenue in the short term.
+
+- **Implement alerting for loss-making products**  
+  Automatically flag products or regions that cross predefined loss thresholds.
+
+- **Collaborate with pricing and operations teams**  
+  Validate findings with domain experts before implementing pricing or discount policy changes.
+
+- **Extend analysis using predictive models**  
+  Forecast demand and margin impact under different pricing scenarios.
+
+These steps would help convert analytical insights into **measurable business outcomes**.
